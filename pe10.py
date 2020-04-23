@@ -26,7 +26,7 @@ def isPrimeTrial(num):
         return True
 
 def primesBelow(num):
-    #use a sieve of Eratosthenes to genearte an array of all primes below num
+    #use a sieve of Eratosthenes to generate an array of all primes below num
 
     list = range(0, num)
     isPrime = [1]*len(list)
