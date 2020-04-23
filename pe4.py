@@ -19,12 +19,12 @@ def isPalindrome(num):
     else:
         return True
 
-
 def isProductOfThreeDigitnumbers(num):
 
     i = 999
     while i > 99:
         if num % i == 0 and num / i > 99 and num / i < 1000:
+            print(f'The two factors are {i} and {int(num/i)}')
             return True
         i -= 1
     else:
@@ -38,8 +38,6 @@ When you find a number which is the product of two numbers > 99, stop.
 '''
 
 number = 999*999
-
-# print(isProductOfThreeDigitnumbers(10000))
 while number > 0:
 
     if isPalindrome(number) and isProductOfThreeDigitnumbers(number):
@@ -48,4 +46,5 @@ while number > 0:
     
     number -= 1
 
+# The two factors are 993 and 913
 # The largest palindromic number which is a product of two three-digit numbers is: 906609
