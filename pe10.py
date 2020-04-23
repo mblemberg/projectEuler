@@ -15,35 +15,6 @@ prime, increment by 2, not one, since primes above 2 can only be odd.
 import array
 import math
 
-def isPrime(num):
-    ''' use a layered approach.
-        1. is it a multiple of a known prime? -> composite
-        2. does it fail Fermat's test? -> composite
-        3. finally, run the trial division test to determine primality
-    '''
-
-    if isPrimeFermat(num) and isPrimeTrial(num):
-        return True
-    else:
-        return False
-
-def isPrimeFermat(num):
-
-    if num == 2 or num == 3:
-        return True
-
-    for a in range(2, min(10, num)):
-        
-        if num % a == 0:
-            return False
-        
-        result = a ** (num - 1) % num
-        
-        if result != 1 and result != -1:
-            return False
-    else:
-        return True
-
 def isPrimeTrial(num):
     if num == 0 or num == 1:
         return False
@@ -62,11 +33,13 @@ def primesBelow(num):
     isPrime[0] = isPrime[1] = 0
 
     for i in range(2, math.ceil(math.sqrt(num))):
-        if isPrime[i]:
-            for j in range(i + 1, num):
-                if j % i == 0:
-                    isPrime[j] = 0
-    
+        if isPrimeTrial(i):
+
+            j = 2 * i
+            while j < num:
+                isPrime[j] = 0
+                j += i
+
     listOfPrimes = []
 
     for i in range(len(isPrime)):
@@ -75,16 +48,8 @@ def primesBelow(num):
 
     return listOfPrimes
 
-n = 7
-sum = 17
 
+primeSum = sum(primesBelow(int(2E6)))
+print(f'The sum of all primes below two million is {primeSum}')
 
-while n < int(2E6):
-
-    n += 2
-
-    if isPrime(n):
-        sum += n
-
-else:
-    print(f'The sum of all primes below two million is {sum}')
+# The sum of all primes below two million is 142913828922
