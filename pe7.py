@@ -19,7 +19,7 @@ def isPrime(num):
 
 def nextPrimeAbove(num):
     while True:
-        num += 1
+        num += 2
         if isPrime(num):
             return num
         
