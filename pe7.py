@@ -23,7 +23,7 @@ def nextPrimeAbove(num):
         if isPrime(num):
             return num
         
-i=6
+i=6 
 lastPrime = 13
 while i < 10001:
     lastPrime = nextPrimeAbove(lastPrime)
