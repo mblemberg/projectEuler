@@ -22,3 +22,5 @@ while True:
     # can use this link to do it: http://www.math.com/school/subject1/lessons/S1U3L3DP.html
 
 print(f'The smallest positive number that is evenly divisible by all numbers from 1 to 20 is {i}')
+
+# The smallest positive number that is evenly divisible by all numbers from 1 to 20 is 232792560
