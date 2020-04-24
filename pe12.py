@@ -53,3 +53,6 @@ while max < 501:
 
 print(f'{tNum} is the {n}th triangular number and the first to have over 500 factors.')
 print(f'It has {nextValueNFactors} factors.')
+
+# 76576500 is the 12376th triangular number and the first to have over 500 factors.
+# It has 576 factors.
