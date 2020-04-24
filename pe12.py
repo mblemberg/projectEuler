@@ -22,23 +22,18 @@ What is the value of the first triangle number to have over five hundred divisor
 import math
 
 def triangleNumber(n):
-    sum = 0
-    for i in range(1, n + 1):
-        sum += i
-    return sum
+    return int(n * (n + 1) / 2)
 
 def nFactors(num):
     if num == 1:
         return 1
-    
+        
     count = 2
     limit = int(math.ceil(num / 2))
-    i = 2
-    while i < limit:
+
+    for i in range(2, int(math.ceil(math.sqrt(num)))):
         if num % i == 0:
             count += 2
-            limit = int(math.ceil(num / i))
-        i += 1
 
     return count
 
