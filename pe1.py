@@ -6,12 +6,15 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 Find the sum of all the multiples of 3 or 5 below 1000.
 '''
 
-sum = 0
+import math
 
-for i in range(0, 1000):
-    if (i%3 == 0) or (i%5 == 0):
-        sum += i
+def sumMultiplesOf(n, upTo):
+    sum = 0
+    for i in range(1, math.ceil(upTo / n)):
+        sum += i * n
+    return sum
 
-print('Sum of all multiples of 3 or 5 between 0 and 1000 is :', sum)
+sum = sumMultiplesOf(3, 1000) + sumMultiplesOf(5, 1000) - sumMultiplesOf(15, 1000)
+print(f'The sum of all multiples of 3 or 5 below 1000 is: {sum}')
 
 # Sum of all multiples of 3 or 5 between 0 and 1000 is : 233168
