@@ -52,11 +52,62 @@ numberGrid = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
     01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48'''.replace('\n', '').replace('    ', ' ').split(' ')
 
 #make it a 2d array so things are easier
-numberArray = [[0]*20]*20
+numberArray = [[0 for i in range(20)] for j in range(20)] 
 for i in range(20):
     for j in range(20):
         numberArray[i][j] = int(numberGrid[j + 20 * i])
 
-print('test')
+def greatestHorizontalProd(numArr):
+    max = 0
+    for i in range(0, 20):
+        for j in range(0, 17):
+            product = 1
+            for k in range(0, 4):
+                product *= numArr[i][j + k]
+            if product > max:
+                max = product
+    return max
 
-# def greatestHorizontalProd(num):
+def greatestVerticalProd(numArr):
+    max = 0
+    for i in range(0, 17):
+        for j in range(0, 20):
+            product = 1
+            for k in range(0, 4):
+                product *= numArr[i + k][j]
+            if product > max:
+                max = product
+    return max
+
+def greatestBackslashProd(numArr):
+    max = 0
+    for i in range(0, 17):
+        for j in range(0, 17):
+            product = 1
+            for k in range(0, 4):
+                product *= numArr[i + k][j + k]
+            if product > max:
+                max = product
+    return max
+
+def greatestForwardslashProd(numArr):
+    max = 0
+    for i in range(3, 20):
+        for j in range(0, 17):
+            product = 1
+            for k in range(0, 4):
+                product *= numArr[i - k][j + k]
+            if product > max:
+                max = product
+    return max
+
+maxProducts = []
+maxProducts.append(greatestHorizontalProd(numberArray))
+maxProducts.append(greatestVerticalProd(numberArray))
+maxProducts.append(greatestBackslashProd(numberArray))
+maxProducts.append(greatestForwardslashProd(numberArray))
+
+maxProduct = max(maxProducts)
+print(f'The maximum product is {maxProduct}')
+
+# The maximum product is 70600674
