@@ -19,3 +19,37 @@ We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
 '''
+import math
+
+def triangleNumber(n):
+    sum = 0
+    for i in range(1, n + 1):
+        sum += i
+    return sum
+
+def nFactors(num):
+    if num == 1:
+        return 1
+    
+    count = 2
+    limit = int(math.ceil(num / 2))
+    i = 2
+    while i < limit:
+        if num % i == 0:
+            count += 2
+            limit = int(math.ceil(num / i))
+        i += 1
+
+    return count
+
+max = 0
+n = 1
+while max < 501:
+    tNum = triangleNumber(n)
+    nextValueNFactors = nFactors(tNum)
+    if nextValueNFactors > max:
+        max = nextValueNFactors
+    n += 1
+
+print(f'{tNum} is the {n}th triangular number and the first to have over 500 factors.')
+print(f'It has {nextValueNFactors} factors.')
