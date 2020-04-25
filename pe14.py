@@ -17,37 +17,33 @@ Which starting number, under one million, produces the longest chain?
 NOTE: Once the chain starts the terms are allowed to go above one million.
 '''
 
-def outputChain(start):
-    n = start
-    print(start, end = ' ')
-
-    while n != 1:
-        if n % 2 == 0:
-            n = n // 2
-        else:
-            n = 3 * n + 1
-        print(n, end = ' ')
-
 def chainLengthFrom(start):
     n = start
     length = 1
     while n != 1:
-        if knownChainLengths[n]:
-            return length + knownChainLengths[n]
+        if n < int(1E6) and knownChainLengths[n]:
+            knownChainLengths[start] = length + knownChainLengths[n] - 1
+            return knownChainLengths[start]
         elif n % 2 == 0:
             n = n // 2
         else:
             n = 3 * n + 1
         length += 1
+    knownChainLengths[start] = length
     return length
 
-knownChainLengths = [0 for i in range(0, int(1E6) + 1)]
 global knownChainLengths
+knownChainLengths = [0 for i in range(0, int(1E6) + 1)]
     # index represents starting point and the value is the chain length from that number
     # a value of 0 means that number has not been evaluated yet
 
 longestChainLength = 0
 for n in range(2, int(1E6)):
-    
+    chainLength = chainLengthFrom(n)
+    if chainLength > longestChainLength:
+        longestChainLength = chainLength
+        startVal = n
 
-print(chainLengthFrom(13))
+print(f'A starting value of {startVal} gives a chain length of {longestChainLength}')
+
+# A starting value of 837799 gives a chain length of 525
