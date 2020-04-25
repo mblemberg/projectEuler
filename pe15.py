@@ -19,3 +19,5 @@ for col in range(2, n + 1):
 
 print(f'Number of paths through a {n}x{n} lattice = {thisColumn[n]}')
 # Number of paths through a 20x20 lattice = 137846528820
+
+# Note: the combinatorics solution for this is very cool
