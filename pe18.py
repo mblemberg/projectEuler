@@ -58,3 +58,5 @@ for row in range(len(numArray) - 2, -1, -1):
         numArray[row][col] += max(numArray[row + 1][col], numArray[row + 1][col + 1])
 
 print(f'Maximum path sum is {numArray[0][0]}')
+
+# Maximum path sum is 1074
